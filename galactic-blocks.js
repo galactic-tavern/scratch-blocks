@@ -2,7 +2,8 @@
 var workspace = null; 
 
 window.addEventListener("open-blocks", function(ev) {
-    document.getElementById("blocklyDiv").style.display = "block";
+    document.getElementById("blocklyWrap").style.display = "block";
+    
     if (workspace === null) {
         workspace = Blockly.inject('blocklyDiv', {
             comments: true,
@@ -29,7 +30,26 @@ window.addEventListener("open-blocks", function(ev) {
                 dragShadowOpacity: 0.6
             }
         });
+
+        function clearAndHide() {
+            workspace.clear();
+            document.getElementById("blocklyWrap").style.display = "none";
+        }
+
+        document.getElementById("blocklyCancel").onclick = clearAndHide;
+
+        document.getElementById("blocklySave").onclick = function() {
+            window.dispatchEvent(new CustomEvent("save-blocks", {detail: {
+                code: Blockly.Xml.domToText(Blockly.Xml.workspaceToDom(workspace)),
+                
+            }}));
+            clearAndHide();
+        }
     } else {
         workspace.updateToolbox(ev.detail.toolbox);
     }
+    document.getElementById("sprite-prev").src = ev.detail.sprite.images[ev.detail.mapItem.costumeIdx];
+    document.getElementById("xpos-span").innerHTML = ev.detail.mapItem.x;
+    document.getElementById("ypos-span").innerHTML = ev.detail.mapItem.y;
+
 });
