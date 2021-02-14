@@ -46,3 +46,18 @@ Blockly.Blocks['looks_makeplayersay'] = {
     });
   }
 };
+
+
+Blockly.Blocks['looks_nextcostume'] = {
+  /**
+   * Block to switch the sprite's costume to the next one.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": Blockly.Msg.LOOKS_NEXTCOSTUME,
+      "category": Blockly.Categories.looks,
+      "extensions": ["colours_looks", "shape_statement"]
+    });
+  }
+};
