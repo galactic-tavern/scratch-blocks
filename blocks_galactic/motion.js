@@ -20,7 +20,7 @@
 
 'use strict';
 
-goog.provide('Blockly.Blocks.event');
+goog.provide('Blockly.Blocks.motion');
 
 goog.require('Blockly.Blocks');
 goog.require('Blockly.Colours');
@@ -28,33 +28,48 @@ goog.require('Blockly.constants');
 goog.require('Blockly.ScratchBlocks.VerticalExtensions');
 
 
-Blockly.Blocks['event_whenplayerinteracts'] = {
+Blockly.Blocks['motion_blocking_menu'] = {
     /**
-     * Block for when this sprite clicked.
+     * Go to drop-down menu.
      * @this Blockly.Block
      */
     init: function() {
       this.jsonInit({
-        "id": "event_whenplayerinteracts",
-        "message0": "When player interacts with me",
-        "category": Blockly.Categories.event,
-        "extensions": ["colours_event", "shape_hat"]
+        "message0": "%1",
+        "args0": [
+          {
+            "type": "field_dropdown",
+            "name": "BLOCK_PLAYER",
+            "options": [
+              ["block", 'yes'],
+              ["do not block", 'no']
+            ]
+          }
+        ],
+        "colour": Blockly.Colours.motion.secondary,
+        "colourSecondary": Blockly.Colours.motion.secondary,
+        "colourTertiary": Blockly.Colours.motion.tertiary,
+        "extensions": ["output_string"]
       });
     }
-  
   };
 
-  Blockly.Blocks['event_whenmapstarts'] = {
+  Blockly.Blocks['motion_setblockplayer'] = {
     /**
-     * Block for when flag clicked.
+     * Block to go to a menu item.
      * @this Blockly.Block
      */
     init: function() {
       this.jsonInit({
-        "id": "event_whenmapstarts",
-        "message0": "When the map starts",
-        "category": Blockly.Categories.event,
-        "extensions": ["colours_event", "shape_hat"]
+        "message0": "I %1 the player",
+        "args0": [
+          {
+            "type": "input_value",
+            "name": "BLOCK_PLAYER"
+          }
+        ],
+        "category": Blockly.Categories.motion,
+        "extensions": ["colours_motion", "shape_statement"]
       });
     }
   };
