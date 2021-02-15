@@ -27,6 +27,48 @@ goog.require('Blockly.Colours');
 goog.require('Blockly.constants');
 goog.require('Blockly.ScratchBlocks.VerticalExtensions');
 
+function createSwitchCostumeMenu(getDynamicMenuOptions) {
+  Blockly.Blocks['looks_costume_select_menu'] = {
+
+    init: function() {
+      this.jsonInit({
+        "message0": "%1",
+        "args0": [
+          {
+            "type": "field_dropdown",
+            "name": "COSTUME_SELECT",
+            "options": getDynamicMenuOptions
+          }
+        ],
+        "colour": Blockly.Colours.looks.secondary,
+        "colourSecondary": Blockly.Colours.looks.secondary,
+        "colourTertiary": Blockly.Colours.looks.tertiary,
+        "extensions": ["output_string"]
+      });
+    }
+  };
+}
+
+Blockly.Blocks['looks_switchcostumeto'] = {
+  /**
+   * Block to switch the sprite's costume to the selected one.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "Switch costume to %1",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "COSTUME"
+        }
+      ],
+      "category": Blockly.Categories.looks,
+      "extensions": ["colours_looks", "shape_statement"]
+    });
+  }
+};
+
 Blockly.Blocks['looks_makeplayersay'] = {
   /**
    * Block to say.
@@ -61,3 +103,4 @@ Blockly.Blocks['looks_nextcostume'] = {
     });
   }
 };
+

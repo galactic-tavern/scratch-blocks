@@ -8,8 +8,10 @@ window.addEventListener("open-blocks", function(ev) {
     document.getElementById("sprite-prev").src = sprite.images[mapItem.costumeIdx];
     document.getElementById("xpos-span").innerHTML = mapItem.x;
     document.getElementById("ypos-span").innerHTML = mapItem.y;
+    createSwitchCostumeMenu(ev.detail.resolveCostumeSelect)
 
     if (workspace === null) {
+
         workspace = Blockly.inject('blocklyDiv', {
             comments: true,
             disable: false,

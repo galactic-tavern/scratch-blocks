@@ -29,10 +29,7 @@ goog.require('Blockly.ScratchBlocks.VerticalExtensions');
 
 
 Blockly.Blocks['motion_blocking_menu'] = {
-    /**
-     * Go to drop-down menu.
-     * @this Blockly.Block
-     */
+
     init: function() {
       this.jsonInit({
         "message0": "%1",
@@ -55,10 +52,7 @@ Blockly.Blocks['motion_blocking_menu'] = {
   };
 
   Blockly.Blocks['motion_setblockplayer'] = {
-    /**
-     * Block to go to a menu item.
-     * @this Blockly.Block
-     */
+
     init: function() {
       this.jsonInit({
         "message0": "I %1 the player",
