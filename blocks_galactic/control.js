@@ -102,3 +102,32 @@ Blockly.Blocks['control_repeat'] = {
       });
     }
   };
+
+  Blockly.Blocks['control_if'] = {
+    /**
+     * Block for if-then.
+     * @this Blockly.Block
+     */
+    init: function() {
+      this.jsonInit({
+        "type": "control_if",
+        "message0": Blockly.Msg.CONTROL_IF,
+        "message1": "%1", // Statement
+        "args0": [
+          {
+            "type": "input_value",
+            "name": "CONDITION",
+            "check": "Boolean"
+          }
+        ],
+        "args1": [
+          {
+            "type": "input_statement",
+            "name": "SUBSTACK"
+          }
+        ],
+        "category": Blockly.Categories.control,
+        "extensions": ["colours_control", "shape_statement"]
+      });
+    }
+  };

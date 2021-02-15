@@ -38,8 +38,8 @@ Blockly.Blocks['motion_blocking_menu'] = {
             "type": "field_dropdown",
             "name": "BLOCK_PLAYER",
             "options": [
-              ["block", 'yes'],
-              ["do not block", 'no']
+              ["blocking", 'yes'],
+              ["not blocking", 'no']
             ]
           }
         ],
@@ -55,7 +55,7 @@ Blockly.Blocks['motion_blocking_menu'] = {
 
     init: function() {
       this.jsonInit({
-        "message0": "I %1 the player",
+        "message0": "Set %1 the player",
         "args0": [
           {
             "type": "input_value",
@@ -64,6 +64,16 @@ Blockly.Blocks['motion_blocking_menu'] = {
         ],
         "category": Blockly.Categories.motion,
         "extensions": ["colours_motion", "shape_statement"]
+      });
+    }
+  };
+
+  Blockly.Blocks['motion_isblockingplayer'] = {
+    init: function() {
+      this.jsonInit({
+        "message0": "blocking player",
+        "category": Blockly.Categories.motion,
+        "extensions": ["colours_motion", "output_boolean"]
       });
     }
   };

@@ -104,3 +104,17 @@ Blockly.Blocks['looks_nextcostume'] = {
   }
 };
 
+Blockly.Blocks['looks_currentcostume'] = {
+  /**
+   * Block to report costume's number
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "current costume",
+      "category": Blockly.Categories.looks,
+      "checkboxInFlyout": true,
+      "extensions": ["colours_looks", "output_number"]
+    });
+  }
+};
