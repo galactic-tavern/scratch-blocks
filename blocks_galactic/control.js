@@ -209,3 +209,45 @@ Blockly.Blocks['control_repeat'] = {
     }
   };
   
+
+  Blockly.Blocks['control_wait'] = {
+    /**
+     * Block to wait (pause) stack.
+     * @this Blockly.Block
+     */
+    init: function() {
+      this.jsonInit({
+        "id": "control_wait",
+        "message0": "Wait %1 game ticks",
+        "args0": [
+          {
+            "type": "input_value",
+            "name": "DURATION"
+          }
+        ],
+        "category": Blockly.Categories.control,
+        "extensions": ["colours_control", "shape_statement"]
+      });
+    }
+  };
+  
+  Blockly.Blocks['control_wait_until'] = {
+    /**
+     * Block to wait until a condition becomes true.
+     * @this Blockly.Block
+     */
+    init: function() {
+      this.jsonInit({
+        "message0": "Wait until %1",
+        "args0": [
+          {
+            "type": "input_value",
+            "name": "CONDITION",
+            "check": "Boolean"
+          }
+        ],
+        "category": Blockly.Categories.control,
+        "extensions": ["colours_control", "shape_statement"]
+      });
+    }
+  };
