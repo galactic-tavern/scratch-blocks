@@ -46,6 +46,35 @@ window.addEventListener("open-blocks", function(ev) {
 
     if (mapItem.code) {
         var xml = Blockly.Xml.textToDom(mapItem.code);
+        
+        var existingMessages = [];
+        xml.querySelectorAll("xml > variables > variable[type='broadcast_msg']").forEach(node =>
+            existingMessages.push(node.innerHTML));
+        
+        console.log(existingMessages);
+        ev.detail.broadcastMsgNames.filter(function(name) { return name !== "message1"}).forEach(function(msgName) {
+            if (existingMessages.indexOf(msgName) < 0) {
+                var newVar = document.createElement("variable");
+                newVar.setAttribute("type", "broadcast_msg");
+                newVar.setAttribute("islocal", "false");
+                newVar.setAttribute("iscloud", "false");
+                newVar.innerText = msgName;
+                xml.querySelector("xml > variables").appendChild(newVar);
+            }
+        })
+
+        console.log(Blockly.Xml.domToText(xml));
+
+        Blockly.Xml.domToWorkspace(xml, workspace);
+    } else {
+        var xml = Blockly.Xml.textToDom(
+            '<xml xmlns="http://www.w3.org/1999/xhtml"><variables>' +
+                ev.detail.broadcastMsgNames.filter(function(name) { return name !== "message1"}).map(function(name) { 
+                    return '<variable type="broadcast_msg" islocal="false" iscloud="false">' + name + '</variable>'
+                }).join() +
+            '</variables></xml>'
+        );
+
         Blockly.Xml.domToWorkspace(xml, workspace);
     }
 

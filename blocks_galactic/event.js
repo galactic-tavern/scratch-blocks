@@ -58,3 +58,49 @@ Blockly.Blocks['event_whenplayerinteracts'] = {
       });
     }
   };
+
+  Blockly.Blocks['event_whenbroadcastreceived'] = {
+    /**
+     * Block for when broadcast received.
+     * @this Blockly.Block
+     */
+    init: function() {
+      this.jsonInit({
+        "id": "event_whenbroadcastreceived",
+        "message0": "When I receive message %1",
+        "args0": [
+          {
+            "type": "field_variable",
+            "name": "BROADCAST_OPTION",
+            "variableTypes": [Blockly.BROADCAST_MESSAGE_VARIABLE_TYPE],
+            "variable": "message1"
+          }
+        ],
+        "category": Blockly.Categories.event,
+        "extensions": ["colours_event", "shape_hat"]
+      });
+    }
+  };
+
+  Blockly.Blocks['event_broadcast'] = {
+    /**
+     * Block to send a broadcast.
+     * @this Blockly.Block
+     */
+    init: function() {
+      this.jsonInit({
+        "id": "event_broadcast",
+        "message0": "Broadcast message %1",
+        "args0": [
+          {
+            "type": "field_variable",
+            "name": "BROADCAST_OPTION",
+            "variableTypes":[Blockly.BROADCAST_MESSAGE_VARIABLE_TYPE],
+            "variable": "message1"
+          }
+        ],
+        "category": Blockly.Categories.event,
+        "extensions": ["colours_event", "shape_statement"]
+      });
+    }
+  };
